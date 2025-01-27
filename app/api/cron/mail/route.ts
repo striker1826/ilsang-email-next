@@ -20,40 +20,43 @@ export async function GET() {
       subject: "[일상백과] 임산부의 정확한 의미는?",
       from: "minseob1826@gmail.com",
       html: ` <div
-      style={{
-        background: "white",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifySelf: "center",
-        padding: "40px 20px",
-      }}
-    >
-      <h1
         style={{
-          fontWeight: "800",
+          background: "white",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifySelf: "center",
+          padding: "40px 20px",
         }}
       >
-        오늘의 질문
-      </h1>
-      <div
-        style={{
-          backgroundColor: "#b8b6b6",
-          color: "#2A2A2A",
-          fontWeight: "bold",
-          marginTop: "20px",
-          padding: "20px",
-        }}
-      >
-        임산부의 정확한 뜻을 알고 계시나요?
-      </div>
-    </div>`,
+        <h1
+          style={{
+            fontWeight: "800",
+          }}
+        >
+          오늘의 질문
+        </h1>
+        <div
+          style={{
+            backgroundColor: "#b8b6b6",
+            color: "#2A2A2A",
+            fontWeight: "bold",
+            marginTop: "20px",
+            padding: "20px",
+          }}
+        >
+          임산부의 정확한 뜻을 알고 계시나요?
+        </div>
+      </div>`,
     };
 
-    return transporter.sendMail(mailData);
-  } catch (err) {
-    console.log(err);
-  }
+    // 메일 발송
+    const info = await transporter.sendMail(mailData);
 
-  return NextResponse.json({ ok: true });
+    // 메일 발송 성공 응답
+    return NextResponse.json({ ok: true, message: "Email sent", info });
+  } catch (err) {
+    console.error("Email sending error:", err);
+    return NextResponse.json({ ok: false, error: "Failed to send email" });
+  }
 }
