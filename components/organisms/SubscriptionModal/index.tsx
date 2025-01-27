@@ -10,7 +10,7 @@ interface Props {
 }
 
 const SubscriptionModal = ({ isOpen = false, closeEvent }: Props) => {
-  const emailInputRef = useRef(null);
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
 
   const submitSubscription = async () => {
     const emailInputValue = emailInputRef.current?.value;
