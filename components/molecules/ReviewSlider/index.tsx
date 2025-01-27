@@ -3,10 +3,9 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useState } from "react";
 
 const ReviewSlider = () => {
-  const [_, setCurrentSlide] = useState(0);
+  // const [_, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: false,
@@ -17,7 +16,7 @@ const ReviewSlider = () => {
     autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (current: number) => setCurrentSlide(current),
+    // afterChange: (current: number) => setCurrentSlide(current),
   };
 
   return (
