@@ -47,6 +47,7 @@ const SubscriptionModal = ({ isOpen = false, closeEvent }: Props) => {
           "Content-Type": "application/json",
         },
       });
+
       toast.success("구독이 성공적으로 등록되었습니다.");
       closeEvent();
     } catch (err) {

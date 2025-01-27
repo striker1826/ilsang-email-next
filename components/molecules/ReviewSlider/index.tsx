@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { useState } from "react";
 
 const ReviewSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [_, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: false,
