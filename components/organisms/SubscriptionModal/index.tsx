@@ -89,8 +89,8 @@ const SubscriptionModal = ({ isOpen = false, closeEvent }: Props) => {
               </button>
             </div>
             <p className="mb-6 font-[600] text-[14px] text-[#2A2A2A]">
-              구독을 신청하시면 3일에 한번씩 일상생활에서 놓치기 쉬운 지식들을
-              메일로 전해드립니다
+              구독을 신청하시면 월, 수, 금 오전 7시마다 일상생활에서 놓치기 쉬운
+              지식들을 메일로 전해드립니다
             </p>
             <input
               ref={emailInputRef}

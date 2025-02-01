@@ -20,7 +20,8 @@ const HomeContent = ({ setSubscriptionModal }: Props) => {
           당신이 몰랐던 사실들
         </p>
         <p className="text-center text-[20px] text-[#838584] mt-[20px]">
-          3일에 한 번<br /> 일상에서 흥미를 더할 새로운 지식을
+          월, 수, 금 오전 7시마다
+          <br /> 일상에서 흥미를 더할 새로운 지식을
           <br /> 메일로 받아보세요.
         </p>
         <button
