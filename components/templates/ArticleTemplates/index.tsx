@@ -11,7 +11,7 @@ interface Props {
   content: string;
 }
 
-const ArticleTemplates = ({ article, content }: Props) => {
+const ArticleTemplates = ({ article }: Props) => {
   const router = useRouter();
 
   // 아티클 리스트 페이지로 이동하는 함수
