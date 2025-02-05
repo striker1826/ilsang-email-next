@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Header from "@/components/organisms/Header";
 import Footer from "../Footer";
+import { useRouter } from "next/navigation";
 
 interface Props {
   article: { title: string; content: string };
@@ -11,7 +12,13 @@ interface Props {
 }
 
 const ArticleTemplates = ({ article, content }: Props) => {
-  console.log({ content });
+  const router = useRouter();
+
+  // 아티클 리스트 페이지로 이동하는 함수
+  const goToArticleList = () => {
+    router.push("/articles"); // "/articles"는 아티클 목록 페이지의 경로입니다
+  };
+
   return (
     <div className="flex justify-center bg-[#F9F9F9]">
       <div className="r-lg:max-w-[900px]">
@@ -21,10 +28,7 @@ const ArticleTemplates = ({ article, content }: Props) => {
             <h1 className="mt-[48px] break-keep color-[#222222] text-[34px] font-bold">
               {article.title}
             </h1>
-            <div
-              className="my-[36px] break-keep prose"
-              // dangerouslySetInnerHTML={{ __html: content }}
-            >
+            <div className="my-[36px] break-keep prose">
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
                 components={{
@@ -105,6 +109,16 @@ const ArticleTemplates = ({ article, content }: Props) => {
               >
                 {article.content}
               </ReactMarkdown>
+            </div>
+
+            {/* 전체 아티클 리스트로 가는 버튼 추가 */}
+            <div className="mt-20 mb-8 flex justify-center r-lg:justify-end">
+              <button
+                onClick={goToArticleList}
+                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg shadow-md"
+              >
+                전체 아티클 리스트 보기
+              </button>
             </div>
           </div>
           <Footer />
