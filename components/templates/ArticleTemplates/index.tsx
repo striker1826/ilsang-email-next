@@ -50,10 +50,10 @@ const ArticleTemplates = ({ article }: Props) => {
 
             {/* Mobile */}
             <div
-              className={`fixed bottom-10 right-10 r-lg:hidden transition-transform duration-300 ease-in-out ${
+              className={`fixed bottom-10 right-10 r-lg:hidden transition-all duration-500 ease-in-out ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-20 opacity-0"
+                  : "translate-y-10 opacity-0"
               }`}
             >
               <button
