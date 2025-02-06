@@ -1,6 +1,7 @@
 "use client";
 
 import ReviewSlider from "@/components/molecules/ReviewSlider";
+import Link from "next/link";
 
 interface Props {
   setSubscriptionModal: (bool: boolean) => void;
@@ -32,7 +33,7 @@ const HomeContent = ({ setSubscriptionModal }: Props) => {
         </button>
       </section>
 
-      <section className="px-[16px] flex flex-col justify-center items-center py-[100px]">
+      <section className="px-[16px] flex flex-col justify-center items-center py-[100px] border-b-[2px]">
         <p className="text-[30px] font-[700] text-center">
           왜 일상백과를
           <br />
@@ -70,6 +71,18 @@ const HomeContent = ({ setSubscriptionModal }: Props) => {
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="px-[24px] flex flex-col justify-center items-center py-[100px] border-b-[2px]">
+        <p className="text-[30px] font-[700] text-center">최근 아티클 보기</p>
+        <p className="text-center text-[20px] text-[#838584] mt-[20px]">
+          흥미로운 아티클을 확인하고 더 많은 정보를 얻어보세요.
+        </p>
+        <Link href="/articles" target="_blank">
+          <button className="mt-[48px] bg-[#5a5a5a] rounded-[8px] py-[16px] px-[28px] font-[700] text-[#F3FBFE] text-[16px]">
+            아티클 리스트 보기
+          </button>
+        </Link>
       </section>
 
       <section className="px-[24px] flex flex-col justify-center items-center py-[100px]">
