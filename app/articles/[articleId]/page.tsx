@@ -20,7 +20,7 @@ const ArticlePage = async ({
 
   const content = await markdownToHtml(article?.data?.content);
 
-  return <ArticleTemplates article={article.data} content={content} />;
+  return <ArticleTemplates article={article.data} />;
 };
 
 export default ArticlePage;
