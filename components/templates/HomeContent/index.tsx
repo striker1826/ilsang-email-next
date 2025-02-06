@@ -105,7 +105,7 @@ const HomeContent = ({ setSubscriptionModal }: Props) => {
       <section
         className="px-[16px] flex flex-col justify-center items-center py-[100px]"
         style={{
-          background: "linear-gradient(to bottom, #f4f4f4 20%, #e0e0e0 100%);",
+          background: "linear-gradient(to bottom, #f4f4f4 20%, #e0e0e0 100%)",
         }}
       >
         <p className="text-[30px] font-[700] text-center">사용자들의 소감</p>
