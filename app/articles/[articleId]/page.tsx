@@ -1,4 +1,5 @@
 import ArticleTemplates from "@/components/templates/ArticleTemplates";
+import { redirect } from "next/navigation";
 
 const ArticlePage = async ({
   params,
@@ -17,6 +18,9 @@ const ArticlePage = async ({
 
   const article = await result.json();
 
+  if (!article?.data) {
+    redirect("/404");
+  }
   return <ArticleTemplates article={article.data} />;
 };
 
