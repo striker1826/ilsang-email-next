@@ -1,48 +1,62 @@
 "use client";
 
-import { Component, ErrorInfo, ReactNode } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
-interface Props {
+// ErrorBoundaryProps는 ErrorBoundary에 전달될 props 타입을 정의합니다.
+interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
-interface State {
-  hasError: boolean;
+// ErrorBoundaryWrapperProps는 ErrorBoundaryWrapper에 전달될 props 타입을 정의합니다.
+interface ErrorBoundaryWrapperProps {
+  onError: (error: Error, errorInfo: React.ErrorInfo) => void;
+  children: ReactNode;
 }
 
-class ErrorBoundary extends Component<Props, State> {
-  state: State = {
-    hasError: false,
+const ErrorBoundary = ({ children }: ErrorBoundaryProps) => {
+  const [hasError, setHasError] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (hasError) {
+      router.push("/404"); // 에러가 발생하면 404 페이지로 리디렉션
+    }
+  }, [hasError, router]);
+
+  const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
+    console.error("에러 발생:", error, errorInfo);
+    setHasError(true);
   };
 
-  static getDerivedStateFromError(error: Error) {
-    return { hasError: true }; // 에러 발생 시 상태 업데이트
+  if (hasError) {
+    return null; // 에러 발생 시 아무것도 렌더링하지 않음 (404 페이지로 리디렉션)
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // 에러 로깅 등의 작업을 추가할 수 있습니다.
-    console.error("에러 발생:", error, errorInfo);
-  }
+  return (
+    <ErrorBoundaryWrapper onError={handleError}>
+      {children}
+    </ErrorBoundaryWrapper>
+  );
+};
 
-  componentDidUpdate() {
-    if (this.state.hasError) {
-      this.redirectTo404(); // 에러가 발생하면 404 페이지로 리디렉션
-    }
-  }
+// ErrorBoundaryWrapper 컴포넌트 타입 지정
+const ErrorBoundaryWrapper = ({
+  onError,
+  children,
+}: ErrorBoundaryWrapperProps) => {
+  useEffect(() => {
+    // 자식 컴포넌트에서 에러 발생 시 핸들링
+    const errorListener = (event: any) => {
+      onError(event.error, event.errorInfo);
+    };
+    window.addEventListener("error", errorListener);
+    return () => {
+      window.removeEventListener("error", errorListener);
+    };
+  }, [onError]);
 
-  redirectTo404() {
-    const router = useRouter();
-    router.push("/404");
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return null; // 에러 발생 시 아무것도 렌더링하지 않음 (404 페이지로 리디렉션)
-    }
-
-    return this.props.children;
-  }
-}
+  return <>{children}</>;
+};
 
 export default ErrorBoundary;
