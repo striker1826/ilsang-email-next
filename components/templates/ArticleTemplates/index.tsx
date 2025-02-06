@@ -43,7 +43,84 @@ const ArticleTemplates = ({ article }: Props) => {
               {article.title}
             </h1>
             <div className="my-[36px] break-keep prose">
-              <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold text-gray-900">
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-semibold text-gray-800">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-xl font-semibold text-gray-700">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-gray-700 leading-relaxed">{children}</p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside pl-2">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside">{children}</ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-gray-700 pl-2">{children}</li>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 pl-2 border-[#04A76B] font-[600] text-[#C2C7CA]">
+                      {children}
+                    </blockquote>
+                  ),
+                  code: ({ children }) => (
+                    <code className="bg-gray-100 px-2 py-1 rounded text-red-600 font-mono">
+                      {children}
+                    </code>
+                  ),
+                  pre: ({ children }) => (
+                    <pre className="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
+                      {children}
+                    </pre>
+                  ),
+                  a: ({ children, href }) => (
+                    <a href={href} className="text-blue-600 hover:underline">
+                      {children}
+                    </a>
+                  ),
+                  table: ({ children }) => (
+                    <table className="border-collapse border border-gray-300 w-full">
+                      {children}
+                    </table>
+                  ),
+                  thead: ({ children }) => (
+                    <thead className="bg-gray-200 text-gray-900 font-semibold">
+                      {children}
+                    </thead>
+                  ),
+                  tbody: ({ children }) => (
+                    <tbody className="text-gray-800">{children}</tbody>
+                  ),
+                  tr: ({ children }) => (
+                    <tr className="border border-gray-300">{children}</tr>
+                  ),
+                  th: ({ children }) => (
+                    <th className="border border-gray-300 px-4 py-2 bg-gray-100">
+                      {children}
+                    </th>
+                  ),
+                  td: ({ children }) => (
+                    <td className="border border-gray-300 px-4 py-2">
+                      {children}
+                    </td>
+                  ),
+                }}
+              >
                 {article.content}
               </ReactMarkdown>
             </div>
