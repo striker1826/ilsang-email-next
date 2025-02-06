@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen bg-[#F9F9F9] text-center px-6">
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-228px)] bg-[#F9F9F9] text-center px-6">
         <h1 className="text-[80px] font-bold text-[#2A2A2A]">404</h1>
         <p className="text-[24px] text-[#555] mt-4">
           페이지를 찾을 수 없습니다.
