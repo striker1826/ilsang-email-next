@@ -11,7 +11,6 @@ const ArticleListPage = async () => {
 
   const articleList = await result.json();
 
-  articleList.data.map((el) => console.log(el.title));
   return <ArticleListTemplates articleList={articleList?.data} />;
 };
 
