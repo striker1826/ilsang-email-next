@@ -1,5 +1,4 @@
 import ArticleTemplates from "@/components/templates/ArticleTemplates";
-import markdownToHtml from "@/lib/markdownToHtml";
 
 const ArticlePage = async ({
   params,
@@ -17,8 +16,6 @@ const ArticlePage = async ({
   );
 
   const article = await result.json();
-
-  const content = await markdownToHtml(article?.data?.content);
 
   return <ArticleTemplates article={article.data} />;
 };
