@@ -4,7 +4,7 @@ interface Props {
 
 const HomeHeader = ({ setSubscriptionModal }: Props) => {
   return (
-    <header className="flex r-lg:px-[100px] justify-between items-center py-[16px] px-[24px] bg-[#fff] z-20 sticky">
+    <header className="flex r-lg:px-[100px] justify-between items-center py-[16px] px-[24px] bg-[#fff] z-20 sticky top-0 left-0">
       <div className="text-[40px] font-[800] font-brush">일상백과</div>
       <div className="flex items-center gap-[20px]">
         {/* <Link href={""} className="text-[16px] font-[800] text-[#2A2A2A]">
