@@ -1,7 +1,7 @@
 "use client";
 
 import { Component, ErrorInfo, ReactNode } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface Props {
   children: ReactNode;
